@@ -2,7 +2,7 @@
 > Bomberman Like
 ## Fonctionnalités à développer
 
-- [ ] Le terrain
+- [X] Le terrain
 - [ ] Les obstacles (fixe ou random)
 - [ ] Le joueur (déplacement flèches directionnelles)
 - [ ] Ennemis (déplacement aléatoire)
