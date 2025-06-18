@@ -1,3 +1,7 @@
+body {
+  background-image: url(/assets/background.jpg);
+  background-size: cover;
+}
 .playground {
     width: 792px;
     height: 792px;
@@ -6,16 +10,15 @@
     margin: 20px auto;
     box-sizing: content-box;
     background-color: #d5ccb4;
-    
+    opacity: 0.9;
+    box-shadow: 5px 5px 15px 5px #000000;
 }
     
-.movable-box {
-    width: 24px;
-    height: 24px;
+.player {
     background-color: #36dc86;
+    z-index: 10;
+    border-radius: 4px;
     position: absolute;
-    top: 0;
-    left: 0;
 }
 
 .cell {
@@ -25,17 +28,19 @@
     position: absolute;
 }
 
-.wall {
-    background-image: url('images/wall.png');
+.borderWall {
+    background-image: url(/assets/bloc_indestructible.png);
+    background-size: cover;
+  }
+.fixedWall {
+  background-image: url(/assets/blocfixe.png);
+}  
+.destructible {
+    background-color: orange;
     background-size: cover;
   }
   
-  .destructible {
-    background-image: url(/Bomberman/assets/bloc_indestructible.png);
-    background-size: cover;
-  }
-  
-  .empty {
+.empty {
     background-image: url('images/floor.png');
     background-size: cover;
   }
