@@ -9,7 +9,6 @@ body {
     position: relative;
     margin: 20px auto;
     box-sizing: content-box;
-    background-color: #d5ccb4;
     opacity: 0.9;
     box-shadow: 5px 5px 15px 5px #000000;
 }
@@ -29,19 +28,19 @@ body {
 }
 
 .borderWall {
-    background-image: url(/assets/bloc_indestructible.png);
+    background-image: url(/assets/wall.png);
     background-size: cover;
   }
 .fixedWall {
-  background-image: url(/assets/blocfixe.png);
+  background-image: url(/assets/blocfissure.png);
 }  
 .destructible {
-    background-color: orange;
+    background-image: url(/assets/chevalier.png);
     background-size: cover;
   }
   
 .empty {
-    background-image: url('images/floor.png');
+  background-color: #d5ccb4;
     background-size: cover;
   }
   
