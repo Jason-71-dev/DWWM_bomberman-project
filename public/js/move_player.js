@@ -1,35 +1,67 @@
+window.addEventListener('DOMContentLoaded', () => {
 const player = document.querySelector(".player");
-player.style.width = "24px";
-player.style.height = "24px";
-player.style.left = `${cellSize}px`;
-player.style.top = `${cellSize}px`;
+const cellSize = 24; // à redéfinir ici car utilisé aussi en plateau.js
 
-let playerPosition = { x: 0, y: 0 };
-const maxX = 30;
-const maxY = 30;
+player.style.width = `${cellSize}px`;
+player.style.height = `${cellSize}px`;
 
-document.addEventListener("keydown", movePlayer);
+// Position initiale dans la zone spawn (1,1 ou 2,2)
+let playerPosition = { x: 1, y: 1 };
+const maxX = 32; // cols - 1
+const maxY = 32; // rows - 1
+
+// Position initiale visuelle
+player.style.left = `${playerPosition.x * cellSize}px`;
+player.style.top = `${playerPosition.y * cellSize}px`;
+
+// Fonction qui vérifie si la case est franchissable
+function canMoveTo(x, y) {
+  if (x < 0 || x > maxX || y < 0 || y > maxY) return false;
+  if (!window.grid) return false;
+
+  const cell = window.grid[y][x];
+  if (!cell) return false;
+
+  // bloquer murs extérieurs, murs fixes et blocs destructibles
+  if (cell.type === 'borderWall' || cell.type === 'fixedWall' || cell.type === 'destructible') {
+    return false;
+  }
+
+  return true;
+}
 
 function movePlayer(event) {
-    switch(event.key) {
-        case "ArrowUp":
-            playerPosition.y = Math.max(0, playerPosition.y - 1);
-            break;
-        case "ArrowDown":
-            playerPosition.y = Math.min(maxY, playerPosition.y + 1);
-            break;
-        case "ArrowLeft":
-            playerPosition.x = Math.max(0, playerPosition.x - 1);
-            break;
-        case "ArrowRight":
-            playerPosition.x = Math.min(maxX, playerPosition.x + 1);
-            break;
-    }
+  let newX = playerPosition.x;
+  let newY = playerPosition.y;
+
+  switch(event.key) {
+    case "ArrowUp":
+      newY--;
+      break;
+    case "ArrowDown":
+      newY++;
+      break;
+    case "ArrowLeft":
+      newX--;
+      break;
+    case "ArrowRight":
+      newX++;
+      break;
+    default:
+      return; // ignore autres touches
+  }
+
+  if (canMoveTo(newX, newY)) {
+    playerPosition.x = newX;
+    playerPosition.y = newY;
     updatePlayerPosition();
+  }
 }
 
 function updatePlayerPosition() {
-    const player = document.querySelector(".player");
-    player.style.gridRowStart = playerPosition.y + 1;
-    player.style.gridColumnStart = playerPosition.x + 1;
+  player.style.left = `${playerPosition.x * cellSize}px`;
+  player.style.top = `${playerPosition.y * cellSize}px`;
 }
+
+document.addEventListener("keydown", movePlayer);
+});
