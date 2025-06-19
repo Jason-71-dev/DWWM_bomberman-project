@@ -3,6 +3,9 @@ body {
   background-size: cover;
 }
 .playground {
+    display: grid;
+    grid-template-columns: repeat(33, 24px);
+    grid-template-rows: repeat(33, 24px);
     width: 792px;
     height: 792px;
     border: 2px transparent #000;
