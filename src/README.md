@@ -3,8 +3,8 @@
 ## Fonctionnalités à développer
 
 - [X] Le terrain
-- [ ] Les obstacles (fixe ou random)
-- [ ] Le joueur (déplacement flèches directionnelles)
+- [X] Les obstacles (fixe ou random)
+- [X] Le joueur (déplacement flèches directionnelles)
 - [ ] Ennemis (déplacement aléatoire)
-- [ ] Nuke
-- [ ] Collisions (obstacles, joueur, ennemis, nuke)
+- [X] Nuke
+- [X] Collisions (obstacles, joueur, ennemis, nuke)
