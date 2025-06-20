@@ -46,4 +46,12 @@ body {
   background-color: #d5ccb4;
     background-size: cover;
   }
-  
+
+  .bomb {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    background-image: url(/assets/bomb.png);
+    background-size: cover;
+  }
+    

@@ -6,13 +6,13 @@ player.style.width = `${cellSize}px`;
 player.style.height = `${cellSize}px`;
 
 // Position initiale dans la zone spawn (1,1 ou 2,2)
-let playerPosition = { x: 1, y: 1 };
+window.playerPosition = { x: 1, y: 1 };
 const maxX = 32; // cols - 1
 const maxY = 32; // rows - 1
 
 // Position initiale visuelle
-player.style.left = `${playerPosition.x * cellSize}px`;
-player.style.top = `${playerPosition.y * cellSize}px`;
+player.style.left = `${window.playerPosition.x * cellSize}px`;
+player.style.top = `${window.playerPosition.y * cellSize}px`;
 
 // Fonction qui vérifie si la case est franchissable
 function canMoveTo(x, y) {
@@ -31,8 +31,8 @@ function canMoveTo(x, y) {
 }
 
 function movePlayer(event) {
-  let newX = playerPosition.x;
-  let newY = playerPosition.y;
+  let newX = window.playerPosition.x;
+  let newY = window.playerPosition.y;
 
   switch(event.key) {
     case "ArrowUp":
@@ -48,19 +48,20 @@ function movePlayer(event) {
       newX++;
       break;
     default:
-      return; // ignore autres touches
+      return;
   }
 
   if (canMoveTo(newX, newY)) {
-    playerPosition.x = newX;
-    playerPosition.y = newY;
+    window.playerPosition.x = newX;
+    window.playerPosition.y = newY;
     updatePlayerPosition();
   }
 }
 
+
 function updatePlayerPosition() {
-  player.style.left = `${playerPosition.x * cellSize}px`;
-  player.style.top = `${playerPosition.y * cellSize}px`;
+  player.style.left = `${window.playerPosition.x * cellSize}px`;
+  player.style.top = `${window.playerPosition.y * cellSize}px`;
 }
 
 document.addEventListener("keydown", movePlayer);
