@@ -20,11 +20,17 @@ body {
 
 /* Joueur */    
 .player {
-    background-color: #36dc86;
-    z-index: 10;
-    border-radius: 4px;
-    position: absolute;
+  background-image: url('/assets/gohan.png');
+  background-size: cover;    /* adapte l'image à la taille */
+  background-position: center;
+  width: 24px;               /* même taille que la case */
+  height: 24px;
+  z-index: 10;
+  border-radius: 4px;        /* tu peux enlever si tu veux pas d'arrondi */
+  position: absolute;
+  background-color: transparent; /* supprimer la couleur de fond */
 }
+
 
 .enemy {
   position: absolute;
@@ -75,7 +81,7 @@ body {
   position: absolute;
   width: 24px;
   height: 24px;
-  background-image: url(/assets/explosion.png);
+  background: orangered;
   background-size: cover;
   z-index: 5;
   }

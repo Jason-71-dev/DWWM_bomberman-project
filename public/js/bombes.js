@@ -36,6 +36,11 @@ function explodeBomb(x, y, bombElement) {
   
     // Supprimer la bombe
     bombElement.remove();
+
+    // Supprimer la bombe du tableau bombs
+    bombs = bombs.filter(bomb => !(bomb.x === x && bomb.y === y));
+
+
   
     // Position en cases
     const cellX = Math.floor(x / cellSize);
@@ -46,35 +51,38 @@ function explodeBomb(x, y, bombElement) {
   
     // Dans les 4 directions
     directions.forEach(direction => {
-      for (let i = 1; i <= explosionRange; i++) {
-        const targetX = cellX + direction.dx * i;
-        const targetY = cellY + direction.dy * i;
-  
-        // vérifier si dans les limites
-        if (targetX < 0 || targetX > 32 || targetY < 0 || targetY > 32) break;
-  
-        const targetCell = window.grid[targetY][targetX];
-        if (!targetCell) break;
-  
-        if (targetCell.type === 'borderWall' || targetCell.type === 'fixedWall') {
-          break; // stop si mur indestructible
+        for (let i = 1; i <= explosionRange; i++) {
+          const targetX = cellX + direction.dx * i;
+          const targetY = cellY + direction.dy * i;
+      
+          // vérifier si dans les limites
+          if (targetX < 0 || targetX > 32 || targetY < 0 || targetY > 32) break;
+      
+          const targetCell = window.grid[targetY][targetX];
+          if (!targetCell) break;
+      
+          if (targetCell.type === 'borderWall' || targetCell.type === 'fixedWall') {
+            break; // stop si mur indestructible
+          }
+      
+          // Destruction d'un bloc destructible
+          if (targetCell.type === 'destructible') {
+            console.log('Avant destruction:', targetCell.element.className);
+            targetCell.element.classList.remove('destructible');
+            targetCell.element.classList.add('empty');
+            console.log('Après destruction:', targetCell.element.className);
+            targetCell.type = 'empty'; // important : mise à jour du type
+            createExplosion(targetX, targetY);
+            break; // stop après avoir détruit le bloc
+          }
+      
+          // Case vide → on crée l'explosion mais on continue
+          if (targetCell.type === 'empty') {
+            createExplosion(targetX, targetY);
+          }
         }
-  
-        if (targetCell.type === 'destructible') {
-          targetCell.element.classList.remove('destructible');
-          targetCell.element.classList.add('empty');
-          targetCell.type = 'empty';
-          createExplosion(targetX, targetY);
-          break; // stop après avoir détruit le bloc
-        }
-  
-        // si case vide
-        if (targetCell.type === 'empty') {
-          createExplosion(targetX, targetY);
-        }
-      }
-    });
-  }
+      });
+    }
 
   function createExplosion(cellX, cellY) {
     const cellSize = 24;
@@ -118,5 +126,8 @@ function explodeBomb(x, y, bombElement) {
     // Check ennemis tout de suite (tu peux adapter comme pour le joueur si besoin)
     checkEnemiesHit(cellX, cellY);
   }
-  
+  // Ajoute cette fonction si elle n'existe pas encore :
+function checkEnemiesHit(cellX, cellY) {
+    // Pas encore implémenté, rien à faire pour l'instant
+  }
   
