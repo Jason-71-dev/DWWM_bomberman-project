@@ -84,9 +84,39 @@ function explodeBomb(x, y, bombElement) {
     explosionElement.style.top = `${cellY * cellSize}px`;
     document.querySelector(".playground").appendChild(explosionElement);
   
-    // Supprimer la flamme après 500ms
+    // Positions à vérifier : la case explosion + ses 4 adjacentes
+    const positionsToCheck = [
+      { x: cellX, y: cellY },
+      { x: cellX + 1, y: cellY },
+      { x: cellX - 1, y: cellY },
+      { x: cellX, y: cellY + 1 },
+      { x: cellX, y: cellY - 1 }
+    ];
+  
+    // Check en boucle toutes les 50ms pendant 500ms
+    const checkInterval = setInterval(() => {
+      const px = window.playerPosition.x;
+      const py = window.playerPosition.y;
+  
+      // Est-ce que le joueur est sur une case touchée par l'explosion ?
+      const hit = positionsToCheck.some(pos => pos.x === px && pos.y === py);
+  
+      if (hit) {
+        console.log("💀 Player dead by explosion nearby!");
+        alert("Game Over!");
+        clearInterval(checkInterval);
+        window.location.reload();
+      }
+    }, 50);
+  
+    // Supprimer la flamme après 500ms et arrêter le check
     setTimeout(() => {
+      clearInterval(checkInterval);
       explosionElement.remove();
     }, 500);
+  
+    // Check ennemis tout de suite (tu peux adapter comme pour le joueur si besoin)
+    checkEnemiesHit(cellX, cellY);
   }
-    
+  
+  

@@ -26,6 +26,16 @@ body {
     position: absolute;
 }
 
+.enemy {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  background-color: red;
+  border-radius: 50%;
+  z-index: 6;
+}
+
+
 /* Case */
 .cell {
     width: 24px;
