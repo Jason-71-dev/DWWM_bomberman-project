@@ -26,7 +26,14 @@ function canMoveTo(x, y) {
   if (cell.type === 'borderWall' || cell.type === 'fixedWall' || cell.type === 'destructible') {
     return false;
   }
-
+  // Bloquer si bombe posée sur la case
+  for (const bomb of bombs) {
+    const bombCellX = Math.floor(bomb.x / cellSize);
+    const bombCellY = Math.floor(bomb.y / cellSize);
+    if (bombCellX === x && bombCellY === y) {
+      return false; // bombe sur la case, interdiction de passer
+    }
+  }
   return true;
 }
 
