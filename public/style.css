@@ -2,6 +2,8 @@ body {
   background-image: url(/assets/background.jpg);
   background-size: cover;
 }
+
+/* Plateau */
 .playground {
     display: grid;
     grid-template-columns: repeat(33, 24px);
@@ -15,7 +17,8 @@ body {
     opacity: 0.9;
     box-shadow: 5px 5px 15px 5px #000000;
 }
-    
+
+/* Joueur */    
 .player {
     background-color: #36dc86;
     z-index: 10;
@@ -23,6 +26,7 @@ body {
     position: absolute;
 }
 
+/* Case */
 .cell {
     width: 24px;
     height: 24px;
@@ -30,6 +34,7 @@ body {
     position: absolute;
 }
 
+/* Elements de décor */
 .borderWall {
     background-image: url(/assets/wall.png);
     background-size: cover;
@@ -44,14 +49,25 @@ body {
   
 .empty {
   background-color: #d5ccb4;
-    background-size: cover;
+  background-size: cover;
   }
 
-  .bomb {
-    position: absolute;
-    width: 24px;
-    height: 24px;
-    background-image: url(/assets/bomb.png);
-    background-size: cover;
+/* Bombes */  
+.bomb {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  background-image: url(/assets/bomb.png);
+  background-size: cover;
   }
+
+.explosion {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  background-image: url(/assets/explosion.png);
+  background-size: cover;
+  z-index: 5;
+  }
+    
     
