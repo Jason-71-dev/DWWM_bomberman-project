@@ -106,7 +106,7 @@ function explodeBomb(x, y, bombElement) {
       const px = window.playerPosition.x;
       const py = window.playerPosition.y;
   
-      // Est-ce que le joueur est sur une case touchée par l'explosion ?
+      // Vérifie joueur/explosion
       const hit = positionsToCheck.some(pos => pos.x === px && pos.y === py);
   
       if (hit) {
@@ -123,10 +123,9 @@ function explodeBomb(x, y, bombElement) {
       explosionElement.remove();
     }, 500);
   
-    // Check ennemis tout de suite (tu peux adapter comme pour le joueur si besoin)
+    // Check ennemis tout de suite
     checkEnemiesHit(cellX, cellY);
   }
-  // Ajoute cette fonction si elle n'existe pas encore :
 function checkEnemiesHit(cellX, cellY) {
     // Pas encore implémenté, rien à faire pour l'instant
   }

@@ -8,8 +8,8 @@ body {
     display: grid;
     grid-template-columns: repeat(33, 24px);
     grid-template-rows: repeat(33, 24px);
-    width: 792px;
-    height: 792px;
+    width: 696px;
+    height: 696px;
     border: 2px transparent #000;
     position: relative;
     margin: 20px auto;
@@ -21,12 +21,9 @@ body {
 /* Joueur */    
 .player {
   background-image: url('/assets/gohan.png');
-  background-size: cover;    /* adapte l'image à la taille */
-  background-position: center;
-  width: 24px;               /* même taille que la case */
-  height: 24px;
+  background-size: cover;
   z-index: 10;
-  border-radius: 4px;        /* tu peux enlever si tu veux pas d'arrondi */
+  border-radius: 4px; 
   position: absolute;
   background-color: transparent; /* supprimer la couleur de fond */
 }
@@ -59,7 +56,7 @@ body {
   background-image: url(/assets/blocfissure.png);
 }  
 .destructible {
-    background-image: url(/assets/chevalier.png);
+    background-image: url(/assets/mvegeta.png);
     background-size: cover;
   }
   

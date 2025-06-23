@@ -14,7 +14,7 @@ const maxY = 32; // rows - 1
 player.style.left = `${window.playerPosition.x * cellSize}px`;
 player.style.top = `${window.playerPosition.y * cellSize}px`;
 
-// Fonction qui vérifie si la case est franchissable
+// Fonction si la case franchissable
 function canMoveTo(x, y) {
   if (x < 0 || x > maxX || y < 0 || y > maxY) return false;
   if (!window.grid) return false;
@@ -31,7 +31,7 @@ function canMoveTo(x, y) {
     const bombCellX = Math.floor(bomb.x / cellSize);
     const bombCellY = Math.floor(bomb.y / cellSize);
     if (bombCellX === x && bombCellY === y) {
-      return false; // bombe sur la case, interdiction de passer
+      return false;
     }
   }
   return true;
