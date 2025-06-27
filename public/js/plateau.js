@@ -27,7 +27,7 @@ for (let y = 0; y < rows; y++) {
     }
     else {
       const r = Math.random();
-      if (r < 0.1) cellType = 'fixedWall';        // Mur indestructible aléatoire
+      if (r < 0.2) cellType = 'fixedWall';        // Mur indestructible aléatoire
       else if (r < 0.3) cellType = 'destructible'; // Bloc destructible aléatoire
       else cellType = 'empty';                      // Case vide
     }

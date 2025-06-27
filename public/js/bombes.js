@@ -126,7 +126,17 @@ function explodeBomb(x, y, bombElement) {
     // Check ennemis tout de suite
     checkEnemiesHit(cellX, cellY);
   }
-function checkEnemiesHit(cellX, cellY) {
-    // Pas encore implémenté, rien à faire pour l'instant
+  function checkEnemiesHit(cellX, cellY) {
+    // Check si un ennemi est touché à cette case
+    const cellSize = 24;
+    window.enemies = window.enemies.filter(enemy => {
+      if (enemy.x === cellX && enemy.y === cellY) {
+        enemy.element.remove();
+        console.log("🔥 Ennemi éliminé !");
+        return false; // On l'enlève du tableau
+      }
+      return true;
+    });
   }
+  
   
